@@ -2,7 +2,7 @@
 /*repositorio para armazenamento das questões do TDE  3 
 /*DARLAN MOURA
 URI ONLINE  
-2958 - Pares e Ímpares */
+1259 - Pares e Ímpares */
 #include <stdio.h>
 #include <stdlib.h>
 int main(){
