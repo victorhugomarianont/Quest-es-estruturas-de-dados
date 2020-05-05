@@ -5,29 +5,32 @@ URI ONLINE
 1259 - Pares e Ímpares
 #include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
-
 int main(){
-	int crescente(int *vet, int *vet2){
-	return (*(int*)vet2 - *(int*)vet );
-	}
-    char c;
-	int num1, num2, numero, numero2, i, k = 0, j = 0;
-	scanf("%d %d", &num1, &num2);
-	numero = num1 * num2;
-    int vet[numero], vet2[numero];
-    for (i = 0; i < numero; ++i){
-      	scanf("%d%c", &numero2, &c);
-		if (c == 'V')
-			vet[j++] = (numero2 * 100) + c;
-		else
-			vet2[k++] = (numero2 * 100) + c;
-	}
-    qsort(vet, j, sizeof(int), crescente);
-	qsort(vet2, k, sizeof(int), crescente);
-    for (i = 0; i < j; ++i)
-		printf("%d%c\n", vet[i] / 100, (char)(vet[i] % 100));
-    for (i = 0; i < k; ++i)
-		printf("%d%c\n", vet2[i] / 100, (char)(vet2[i] % 100));
-	return 0;
+	int c_par(void const *par, void const *impar ){
+    return (*(int*)par - *(int*)impar );}
+    int c_impar(void const *par, void const *impar ){
+    return (*(int*)impar - *(int*)par );}
+    int numero, i, num, cont_par = 0, cont_impar = 0;
+    scanf("%d", &numero);
+    int par[numero], impar[numero];
+    for(i = 0; i < numero; i++){
+        scanf("%d", &num);
+        if(num%2 == 0){
+            par[cont_par] = num;
+            cont_par++;
+        }else{
+            impar[cont_impar] = num;
+            cont_impar++;
+        }
+    }
+    qsort(par, cont_par, sizeof(int), c_par);
+    qsort(impar, cont_impar, sizeof(int), c_impar);
+    for(i = 0; i < cont_par; i++){
+        printf("%d\n",par[i]);
+    }
+    for(i = 0; i < cont_impar; i++){
+        printf("%d\n",impar[i]);
+    }
+    
+    return 0;
 }
