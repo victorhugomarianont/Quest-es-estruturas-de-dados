@@ -1,0 +1,34 @@
+#include <stdio.h>
+#include <stdbool.h>
+#include <string.h>
+
+bool imprimeVerificacao(char *);
+int main (){
+	unsigned short casos, qtsLetras;
+	scanf("%hu", &casos);
+	while (casos--)
+{
+		scanf("%hu", &qtsLetras);
+		char alfa[qtsLetras + 1];
+		scanf("%s", alfa);
+		if (imprimeVerificacao(alfa))
+			printf("There are the chance.\n");
+		else
+			printf("There aren't the chance.\n");
+	}
+}
+bool imprimeVerificacao(char *alfa){
+	unsigned short i, qtsMudancas;
+	char comparacao[] = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+	i = 0;
+	qtsMudancas = 0;
+	while (alfa[i]){
+		if (alfa[i] != comparacao[i])
+			qtsMudancas++;
+		i++;
+	}
+	if (qtsMudancas > 2)
+		return false;
+	else
+		return true;
+}
