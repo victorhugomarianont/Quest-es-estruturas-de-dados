@@ -1,0 +1,49 @@
+#include <string.h>
+#include <stdio.h>
+#include <math.h>
+#include <ctype.h>
+
+#define TRUE 1
+#define FALSE 0
+
+int main()
+{
+	int  nc= 0, ma = 0, t, d, k, aux, qtd;
+	int vpre[1000], vpos[1000];
+	char trocas;
+
+	scanf ("%d", &nc);
+
+	for(t=0; t<nc; t++){
+		qtd=0;
+		scanf("%d", &ma);
+
+		for(d=0; d < ma; d++){
+			scanf("%d", &vpre[d]);
+			vpos[d] = vpre[d];
+		}
+
+		do{
+			trocas = FALSE;
+			k = 0;
+			while (k < ma - 1){
+        if (vpos[k] < vpos[k + 1]){	
+          aux = vpos[k];
+					vpos[k] = vpos[k + 1];
+					vpos[k + 1] = aux;
+
+					trocas = TRUE;
+				}
+				k++;
+			}
+		} while (trocas == TRUE);
+
+		for(d=0; d < ma; d++)
+			if (vpre[d] == vpos[d])
+				qtd++;
+
+		printf("%d\n", qtd);
+	}
+
+	return 0;
+}
